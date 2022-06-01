@@ -7,6 +7,7 @@ namespace CardTests
     {
         static void Main(string[] args)
         {
+            //Old tester methods
             /*
             TestingConstructors();
             TestingGetters();
@@ -14,9 +15,64 @@ namespace CardTests
             TestingBools();
             */
 
+            //Hand tester methods
+            /*
             HandConstructor();
             AddTesters();
             IndexTester();
+            /**/
+
+            //BJHand tester methods
+            /**/
+            BJHandConstructor();
+            BJHasAceTester();
+            BJScoreAndIsBustedTester();
+             /**/
+        }
+
+        static void BJHandConstructor()
+        {
+            Deck d1 = new Deck();
+            BJHand b1 = new BJHand();
+            BJHand b2 = new BJHand(d1, 2);
+
+            Console.WriteLine("expecting nothing: " + b1.ToString());
+            Console.WriteLine("Expecting two cards to be drawn: " + b2.ToString());
+
+            d1.Shuffle();
+            BJHand b3 = new BJHand(d1, 2);
+            Console.WriteLine("Expecting two more cards to be drawn: " + b3.ToString());
+        }
+
+        static void BJHasAceTester()
+        {
+            Deck d1 = new Deck();
+            BJHand b1 = new BJHand(d1, 2);
+            d1.Shuffle();
+            BJHand b2 = new BJHand(d1, 2);
+
+            Console.WriteLine("Expecting true: " + b1.HasAce);
+            Console.WriteLine("B2's hand: ");
+            Console.WriteLine(b2.ToString());
+            Console.WriteLine("Expecting true depending on previous cards listed: " + b2.HasAce);
+        }
+
+        static void BJScoreAndIsBustedTester()
+        {
+            Deck d1 = new Deck();
+            d1.Shuffle();
+            BJHand b1 = new BJHand(d1, 2);
+            d1.Shuffle();
+            BJHand b2 = new BJHand(d1, 3);
+
+            Console.WriteLine(b1.ToString());
+            Console.WriteLine("Expecting the score: " + b1.Score);
+            Console.WriteLine("Expecting bool: " + b1.IsBusted);
+
+
+            Console.WriteLine(b2.ToString());
+            Console.WriteLine("Expecting the score: " + b2.Score);
+            Console.WriteLine("Expecting True if score > 21: " + b2.IsBusted);
         }
 
         static void HandConstructor()

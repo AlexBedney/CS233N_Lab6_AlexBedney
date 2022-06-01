@@ -40,26 +40,26 @@ namespace CardClasses
 
         public bool HasCard(Card c)
         {
-            foreach (Card card in cards)
-                if (card == c)
-                    return true;
-            return false;
+            if (IndexOf(c) > -1)
+                return true;
+            else
+                return false;
         }
 
         public bool HasCard(int value)
         {
-            foreach (Card card in cards)
-                if (card.Value == value)
-                    return true;
-            return false;
+            if (IndexOf(value) > -1)
+                return true;
+            else
+                return false;
         }
 
         public bool HasCard(int value, int suit)
         {
-            foreach (Card card in cards)
-                if (card.Value == value && card.Suit == suit)
-                    return true;
-            return false;
+            if (IndexOf(value, suit) > -1)
+                return true;
+            else
+                return false;
         }
 
         // Looked at in break room during class, exempted due to strange bug
@@ -76,15 +76,16 @@ namespace CardClasses
             for (int i = 0; i < cards.Count; i++)
                 if (cards[i] == c)
                     return i;
-            return 0;
+            return -1;
         }
 
         public int IndexOf(int value)
         {
+
             for (int i = 0; i < cards.Count; i++)
                 if (cards[i].Value == value)
                     return i;
-            return 0;
+            return -1;
         }
 
         public int IndexOf(int value, int suit)
@@ -92,7 +93,7 @@ namespace CardClasses
             for (int i = 0; i < cards.Count; i++)
                 if (cards[i].Value == value && cards[i].Suit == suit)
                     return i;
-            return 0;
+            return -1;
         }
 
         public override string ToString()

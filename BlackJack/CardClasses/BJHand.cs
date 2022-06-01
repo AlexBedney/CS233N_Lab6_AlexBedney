@@ -16,7 +16,10 @@ namespace CardClasses
         {
             get
             {
-                return HasAce;
+                if (HasCard(1))
+                    return true;
+                else
+                    return false;
             }
         }
 
